@@ -3,6 +3,7 @@ package main;
 import checker.Checkstyle;
 import checker.Checker;
 import common.Constants;
+import fileio.ActionInputData;
 import fileio.Input;
 import fileio.InputLoader;
 import fileio.Writer;
@@ -70,7 +71,32 @@ public final class Main {
         Writer fileWriter = new Writer(filePath2);
         JSONArray arrayResult = new JSONArray();
 
-        //TODO add here the entry point to your implementation
+        //entry point to implementation
+
+        for(ActionInputData action : input.getCommands()) {
+            //initialise stuff, I think it is an JSONObject
+            switch (action.getActionType()) {
+                case "query" :
+                    switch (action.getObjectType()) {
+                        case "users" :
+                            //do something
+                            break;
+                        default:
+                            //do nothing, invalid input, I hope
+                            break;
+                    }
+                    break;
+                case "command":
+                    //do something, change stuff in the database depending on the command, need to check later
+                    break;
+                default:
+                    //again, nothing
+                    break;
+            }
+            //maybe save results in arrayResult with arrayResult.add(arrayResult.size(), [initialised stuff] );
+        }
+
+        //end of student implementation
 
         fileWriter.closeJSON(arrayResult);
     }
