@@ -1,5 +1,2 @@
 Starting audit...
-[ERROR] C:\Users\VladT\IdeaProjects\poo tema1\.\src\main\Main.java:76:9: 'for' is not followed by whitespace. [WhitespaceAfter]
-[ERROR] C:\Users\VladT\IdeaProjects\poo tema1\.\src\main\Main.java:96: Line is longer than 100 characters (found 111). [LineLength]
 Audit done.
-Checkstyle ends with 2 errors.

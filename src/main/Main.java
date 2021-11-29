@@ -8,6 +8,7 @@ import fileio.Input;
 import fileio.InputLoader;
 import fileio.Writer;
 import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
@@ -73,13 +74,16 @@ public final class Main {
 
         //entry point to implementation
 
-        for(ActionInputData action : input.getCommands()) {
+        for (ActionInputData action : input.getCommands()) {
             //initialise stuff, I think it is an JSONObject
+            JSONObject result = null;
+            //need to initialise otherwise "might have not been initialised"
             switch (action.getActionType()) {
                 case "query" :
                     switch (action.getObjectType()) {
                         case "users" :
                             //do something
+                            result = fileWriter.writeFile(action.getActionId(), "", "");
                             break;
                         default:
                             //do nothing, invalid input, I hope
@@ -87,13 +91,17 @@ public final class Main {
                     }
                     break;
                 case "command":
-                    //do something, change stuff in the database depending on the command, need to check later
+                    //do something, change stuff in the database depending on the command
+                    result = fileWriter.writeFile(action.getActionId(), "",
+                            "error -> Sherlock: The Final Problem is already in favourite list");
+                    //placeholder to at least get the hang of how to format the output
                     break;
                 default:
                     //again, nothing
                     break;
             }
-            //maybe save results in arrayResult with arrayResult.add(arrayResult.size(), [initialised stuff] );
+            //maybe save results in arrayResult with
+            arrayResult.add(arrayResult.size(), result);
         }
 
         //end of student implementation
