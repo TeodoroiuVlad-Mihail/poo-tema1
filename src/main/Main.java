@@ -17,6 +17,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Objects;
 
+//And now my classes, God I wish classes.* did not give a checkstyle error
+import classes.Actors;
+
 /**
  * The entry point to this homework. It runs the checker that tests your implentation.
  */
@@ -74,10 +77,15 @@ public final class Main {
 
         //entry point to implementation
 
+        Actors actors = new Actors(input.getActors());
+        /*input.getMovies()
+        input.getSerials()
+        input.getUsers()*/
+        //these seem useful
+
         for (ActionInputData action : input.getCommands()) {
-            //initialise stuff, I think it is an JSONObject
             JSONObject result = null;
-            //need to initialise otherwise "might have not been initialised"
+            //need to initialise with null otherwise "might have not been initialised"
             switch (action.getActionType()) {
                 case "query" :
                     switch (action.getObjectType()) {
