@@ -14,36 +14,33 @@ public class Actor {
     public String getName() {
         return name;
     }
-
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
     public String getCareerDescription() {
         return careerDescription;
     }
-
-    public void setCareerDescription(String careerDescription) {
+    public void setCareerDescription(final String careerDescription) {
         this.careerDescription = careerDescription;
     }
 
     public ArrayList<String> getFilmography() {
         return filmography;
     }
-
-    public void setFilmography(ArrayList<String> videos) {
+    public void setFilmography(final ArrayList<String> videos) {
         this.filmography = videos;
     }
 
     public Map<ActorsAwards, Integer> getAwards() {
         return awards;
     }
-
-    public void setAwards(Map<ActorsAwards, Integer> awards) {
+    public void setAwards(final Map<ActorsAwards, Integer> awards) {
         this.awards = awards;
     }
 
-    public Actor(String n, String cd, ArrayList<String> f, Map<ActorsAwards, Integer> a) {
+    public Actor(final String n, final String cd, final ArrayList<String> f,
+                 final Map<ActorsAwards, Integer> a) {
         //names are shortened because otherwise too long line
         this.name = n;
         this.careerDescription = cd;

@@ -19,6 +19,7 @@ import java.util.Objects;
 
 //And now my classes, God I wish classes.* did not give a checkstyle error
 import classes.Actors;
+import classes.Movies;
 
 /**
  * The entry point to this homework. It runs the checker that tests your implentation.
@@ -78,8 +79,8 @@ public final class Main {
         //entry point to implementation
 
         Actors actors = new Actors(input.getActors());
-        /*input.getMovies()
-        input.getSerials()
+        Movies movies = new Movies(input.getMovies());
+        /*input.getSerials()
         input.getUsers()*/
         //these seem useful
 
@@ -108,7 +109,6 @@ public final class Main {
                     //again, nothing
                     break;
             }
-            //maybe save results in arrayResult with
             arrayResult.add(arrayResult.size(), result);
         }
 
