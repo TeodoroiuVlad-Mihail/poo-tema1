@@ -101,6 +101,9 @@ public final class Main {
                             break;
                         case "actors":
                             switch(action.getCriteria()){
+                                case "average":
+                                    object = fileWriter.writeFile(action.getActionId(),"",query.Average(action));
+                                    break;
                                 case "filter_description":
                                     object = fileWriter.writeFile(action.getActionId(),"",query.FilterDescription(action));
                                     break;
@@ -139,6 +142,16 @@ public final class Main {
                         case "favorite":
                             object = fileWriter.writeFile(action.getActionId(),"",query.RecFavorite(action));
                             break;
+                        case "standard":
+                            object = fileWriter.writeFile(action.getActionId(),"",query.Standard(action));
+                            break;
+                        case "best_unseen":
+                            object = fileWriter.writeFile(action.getActionId(),"",query.BestUnseen(action));
+                            break;
+                        case "popular":
+                            object = fileWriter.writeFile(action.getActionId(),"",query.Popular(action));
+                            break;
+
                         default: break;
 
                     }

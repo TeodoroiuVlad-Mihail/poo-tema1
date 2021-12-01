@@ -47,20 +47,24 @@ public class Video {
         this.duration = duration;
     }
 
-    public void addFavorite() {
-        this.favorite++;
+    public void SetViews(int views) {
+        this.views = views;
     }
-
     public void addViews() {
         this.views++;
     }
-
-    public int getFavorite() {
-        return favorite;
-    }
-
     public int getViews() {
         return views;
+    }
+
+    public void SetFavorite(int favorite) {
+        this.favorite = favorite;
+    }
+    public void addFavorite() {
+        this.favorite++;
+    }
+    public int getFavorite() {
+        return favorite;
     }
 
     public Video(String name) {

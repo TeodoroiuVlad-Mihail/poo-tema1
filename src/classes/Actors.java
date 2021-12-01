@@ -9,12 +9,8 @@ public class Actors {
     ArrayList<Actor> actors = new ArrayList<>();
     public Actors(List<ActorInputData> list) {
         for(ActorInputData i : list) {
-            Actor actor = new Actor(
-                    i.getName(),
-                    i.getCareerDescription(),
-                    i.getFilmography(),
-                    i.getAwards()
-            );
+            Actor actor = new Actor( i.getName(), i.getCareerDescription(), i.getFilmography(),
+                    i.getAwards());
             actors.add(actor);
         }
     }
