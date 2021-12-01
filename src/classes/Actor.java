@@ -43,7 +43,7 @@ public class Actor {
         this.average = average;
     }
     public double getAverage() {
-        return average;
+        return this.average;
     }
 
     public Actor(String name, String careerDescription, ArrayList<String> filmography, Map<ActorsAwards, Integer> awards) {

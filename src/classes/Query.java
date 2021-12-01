@@ -54,40 +54,56 @@ public class Query { //also reccomendations
             Actor temp = actors.actors.get(i);
             double sum = 0;
             double nr = 0;
+            int universalOk = 0; // for actors that are partially reviews, they are added, but with 0
             for (String f: temp.getFilmography()){
                 if(movies.isMovie(f)) {
                     for(Movie m: movies.movies.values()){
                         if(m.getName().equals(f)){
-                            for(double k: m.getRatings()){
-                                sum = sum + k;
-                                nr = nr + 1;
-                            }
-                        }
-                    }
-                } else {
-                    for(Serial s: serials.serial.values()){
-                        if(s.getName().equals(f)){
-                            for(Seasons ss: s.getSeasons())
-                                for(double k: ss.getRatings()){
+                            if(m.getRatings().size() > 0)
+                                for(double k: m.getRatings()){
                                     sum = sum + k;
                                     nr = nr + 1;
                                 }
                         }
                     }
+                } else {
+                    for(Serial s: serials.serial.values()){
+                        if(s.getName().equals(f)){
+                            int ok = 1; //to see if the series is fully reviewed at least once
+                            double sumSeasons = 0;
+                            double nrSeasons  = 0;
+                            for(Seasons ss: s.getSeasons()) {
+                                if(ss.getRatings().size() == 0)
+                                    ok = 0;
+                                else universalOk = 1;
+                                for (double k : ss.getRatings()) {
+                                    sumSeasons = sumSeasons + k;
+                                    nrSeasons = nrSeasons + 1;
+                                }
+                            }
+                            if(ok  == 1){
+                                sum = sum + sumSeasons;
+                                nr = nr + nrSeasons;
+                            }
+
+                        }
+                    }
                 }
             }
-            if (nr > 0 ) {
+            if (nr > 0) {
                 temp.SetAverage(sum / nr);
+                aux.add(temp);
+            } else if(universalOk == 1){
+                temp.SetAverage(0);
                 aux.add(temp);
             }
         }
         for (i = 0; i < aux.size() - 1; i++) {
-            for(j = 0; j < aux.size() - 1; j++) {
+            for (j = 0; j < aux.size() - 1; j++) {
                 Actor aux1 = aux.get(j);
                 Actor aux2 = aux.get(j + 1);
                 double sum1 = aux1.getAverage();
                 double sum2 = aux2.getAverage();
-                System.out.println(sum1 + " " + sum2);
 
                 if (action.getSortType().equals("asc")) {
                     if (sum1 > sum2) {
@@ -180,21 +196,24 @@ public class Query { //also reccomendations
             boolean contine = true;
             Actor temp = actors.actors.get(i);
             for (j = 0; j < action.getFilters().get(2).size(); j++) {
-                if (!temp.getCareerDescription().toLowerCase().contains(" " + action.getFilters().get(2).get(j)))
+                if (!temp.getCareerDescription().toLowerCase().contains(" " + action.getFilters().get(2).get(j))
+                && !temp.getCareerDescription().toLowerCase().contains(action.getFilters().get(2).get(j)+ " "))
                     contine = false;
             }
             if (contine)
                 aux.add(temp);
         }
-        if (action.getSortType().equals("asc")) {
-            for (i = 0; i < aux.size() - 1; i++) {
-                if (aux.get(i).getCareerDescription().compareTo(aux.get(i + 1).getCareerDescription()) > 0)
-                    Collections.swap(aux, i, i + 1);
-            }
-        } else {
-            for (i = 0; i < aux.size() - 1; i++) {
-                if (aux.get(i).getCareerDescription().compareTo(aux.get(i + 1).getCareerDescription()) < 0)
-                    Collections.swap(aux, i, i + 1);
+        for (i = 0; i < aux.size() - 1; i++) {
+            if (action.getSortType().equals("asc")) {
+                for (j = 0; j < aux.size() - 1; j++) {
+                    if (aux.get(j).getName().compareTo(aux.get(j + 1).getName()) > 0)
+                        Collections.swap(aux, j, j + 1);
+                }
+            } else {
+                for (j = 0; j < aux.size() - 1; j++) {
+                    if (aux.get(j).getName().compareTo(aux.get(j + 1).getName()) < 0)
+                        Collections.swap(aux, j, j + 1);
+                }
             }
         }
         for (i = 0; i < aux.size() /*&& (result.size() < action.getNumber() || action.getNumber() <= 0)*/; i++)
@@ -210,7 +229,7 @@ public class Query { //also reccomendations
             double sum = 0;
             for (Double d : f.getRatings()) {
                 if (d != 0) {
-                    sum += d;
+                    sum = sum + d;
                 }
             }
             f.setTotalRatings(sum / f.getRatings().size());
@@ -281,10 +300,6 @@ public class Query { //also reccomendations
         int dur = 0;
         ArrayList<String> result = new ArrayList<>();
         ArrayList<Video> aux = new ArrayList<>();
-        /*for (Movie f : movies.movies.values()) {
-            if (f.getDuration() != 0)
-                aux.add(f);
-        }*/
         if (action.getObjectType().equals("movies")) {
             for (Movie j : movies.movies.values()){
                 if ( (action.getFilters().get(0).get(0) == null || Integer.parseInt(action.getFilters().get(0).get(0)) == j.getYear() )
@@ -299,15 +314,17 @@ public class Query { //also reccomendations
                     aux.add(j);
             }
         }
-        if (action.getSortType().equals("asc")) {
-            for (i = 0; i < aux.size() - 2; i++) {
-                if (aux.get(i).getDuration() > aux.get(i + 1).getDuration())
-                    Collections.swap(aux, i, i + 1);
-            }
-        } else {
-            for (i = 0; i < aux.size() - 2; i++) {
-                if (aux.get(i).getDuration() < aux.get(i + 1).getDuration())
-                    Collections.swap(aux, i, i + 1);
+        for(i = 0; i < aux.size(); i++) {
+            if (action.getSortType().equals("asc")) {
+                for (int j = 0; j < aux.size() - 1; j++) {
+                    if (aux.get(j).getDuration() > aux.get(j + 1).getDuration())
+                        Collections.swap(aux, j, j + 1);
+                }
+            } else {
+                for (int j = 0; j < aux.size() - 1; j++) {
+                    if (aux.get(j).getDuration() < aux.get(j + 1).getDuration())
+                        Collections.swap(aux, j, j + 1);
+                }
             }
         }
         for (i = 0; i < action.getNumber() && i < aux.size(); i++)
@@ -358,12 +375,14 @@ public class Query { //also reccomendations
         for(int j = 0; j < aux.size() - 1; j ++) {
             if (action.getSortType().equals("asc")) {
                 for (i = 0; i < aux.size() - 1; i++) {
-                    if (aux.get(i).getViews() > aux.get(i + 1).getViews())
+                    if (aux.get(i).getViews() > aux.get(i + 1).getViews() ||
+                            (aux.get(i).getViews() == aux.get(i + 1).getViews() && aux.get(i).getName().compareTo(aux.get(i + 1).getName()) > 0) )
                         Collections.swap(aux, i, i + 1);
                 }
             } else {
                 for (i = 0; i < aux.size() - 1; i++) {
-                    if (aux.get(i).getViews() < aux.get(i + 1).getViews())
+                    if (aux.get(i).getViews() < aux.get(i + 1).getViews() ||
+                            (aux.get(i).getViews() == aux.get(i + 1).getViews() && aux.get(i).getName().compareTo(aux.get(i + 1).getName()) < 0) )
                         Collections.swap(aux, i, i + 1);
                 }
             }
