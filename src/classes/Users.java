@@ -8,7 +8,7 @@ import java.util.List;
 public class Users {
     HashMap<String, User> users = new HashMap<>();
 
-    public Users(List<UserInputData> list) {
+    public Users(final List<UserInputData> list) {
         for (UserInputData i : list) {
             User user = new User(
                     i.getUsername(),
@@ -19,20 +19,31 @@ public class Users {
             users.put(i.getUsername(), user);
         }
     }
-
-    public String addFav(String name, String title, Movies db1, Serials db2) {
-        return users.get(name).addFavorite(title, db1,db2);
+    /**
+     * Favourites show
+     */
+    public String addFav(final String name, final String title, final Movies m, final Serials s) {
+        return users.get(name).addFavorite(title, m, s);
     }
-
-    public String addRatingFilm(String name, String title, Movies db, double r) {
-        return users.get(name).rateMovie(title, r, db);
+    /**
+     * Adds rating specifically to movie
+     */
+    public String addRatingFilm(final String name, final String title, final Movies m,
+                                final double r) {
+        return users.get(name).rateMovie(title, r, m);
     }
-
-    public String addRatingSerial(String name, String title, int nr_sez, double r, Serials db) {
-        return users.get(name).rateSerial(title, r, nr_sez, db);
+    /**
+     * Adds rating specifically to serials
+     */
+    public String addRatingSerial(final String name, final String title, final int nrSez,
+                                  final double r, final Serials s) {
+        return users.get(name).rateSerial(title, r, nrSez, s);
     }
-
-    public String addViews(String name, String title, Movies db1, Serials db2) {
-        return users.get(name).viewing(title, db1,db2);
+    /**
+     * Adds views
+     */
+    public String addViews(final String name, final String title, final Movies m,
+                           final Serials s) {
+        return users.get(name).viewing(title, m, s);
     }
 }

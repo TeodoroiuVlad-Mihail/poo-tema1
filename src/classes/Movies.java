@@ -8,34 +8,40 @@ import java.util.List;
 public class Movies {
     HashMap<String, Movie> movies = new HashMap<>();
 
-    public Movies(List<MovieInputData> list) {
+    public Movies(final List<MovieInputData> list) {
         for (MovieInputData i : list) {
-            Movie new_film = new Movie(
+            Movie movie = new Movie(
                     i.getTitle(),
                     i.getYear(),
                     i.getGenres(),
                     i.getDuration()
             );
-            movies.put(i.getTitle(), new_film);
+            movies.put(i.getTitle(), movie);
         }
     }
-
-    public void addRating(double r, String title) {
+    /**
+     * adds to total ratings
+     */
+    public void addRating(final double r, final String title) {
         movies.get(title).addRating(r);
     }
-
-    public boolean isMovie(String title) {
+    /**
+     * checks if it is a movie or not
+     */
+    public boolean isMovie(final String title) {
         return movies.containsKey(title);
     }
-
-    public void addViews(String title) {
+    /**
+     * adds to views
+     */
+    public void addViews(final String title) {
         movies.get(title).addViews();
     }
-
-    public void addFav(String title) {
+    /**
+     * adds to favorite counter
+     */
+    public void addFav(final String title) {
         movies.get(title).addFavorite();
     }
-
-
 
 }

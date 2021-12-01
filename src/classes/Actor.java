@@ -10,47 +10,72 @@ public class Actor {
     private ArrayList<String> fimography = new ArrayList<>();
     private Map<ActorsAwards, Integer> awards; //
     private double average;
-
+    /**
+     * gets name
+     */
     public String getName() {
         return name;
     }
-    public void setName(String name) {
+    /**
+     * sets name
+     */
+    public void setName(final String name) {
         this.name = name;
     }
-
+    /**
+     * gets career description
+     */
     public String getCareerDescription() {
         return careerDescription;
     }
-    public void setCareerDescription(String careerDescription) {
+    /**
+     * sets career description
+     */
+    public void setCareerDescription(final String careerDescription) {
         this.careerDescription = careerDescription;
     }
-
+    /**
+     * gets filmography
+     */
     public ArrayList<String> getFilmography() {
         return fimography;
     }
-    public void setFimography(ArrayList<String> filmography) {
+    /**
+     * setss filmography
+     */
+    public void setFimography(final ArrayList<String> filmography) {
         this.fimography = fimography;
     }
-
+    /**
+     * gets awards
+     */
     public Map<ActorsAwards, Integer> getAwards() {
         return awards;
     }
-    public void setAwards(Map<ActorsAwards, Integer> awards) {
+    /**
+     * sets awards
+     */
+    public void setAwards(final Map<ActorsAwards, Integer> awards) {
         this.awards = awards;
     }
-
-    public void SetAverage(double average) {
+    /**
+     * gets actor average rating
+     */
+    public void setAverage(final double average) {
         this.average = average;
     }
+    /**
+     * sets actor average rating
+     */
     public double getAverage() {
         return this.average;
     }
 
-    public Actor(String name, String careerDescription, ArrayList<String> filmography, Map<ActorsAwards, Integer> awards) {
+    public Actor(final String name, final String careerDescription,
+                 final ArrayList<String> filmography, final Map<ActorsAwards, Integer> awards) {
         this.name = name;
         this.careerDescription = careerDescription;
         this.fimography = filmography;
         this.awards = awards;
     }
-
 }

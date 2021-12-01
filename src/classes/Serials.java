@@ -6,32 +6,43 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Serials {
-    HashMap<String, Serial> serial = new HashMap<>();
-    public Serials(List<SerialInputData> list) {
-        for(SerialInputData i : list) {
-            Serial new_serial = new Serial(
+    HashMap<String, Serial> serials = new HashMap<>();
+    public Serials(final List<SerialInputData> list) {
+        for (SerialInputData i : list) {
+            Serial serial = new Serial(
                     i.getTitle(),
                     i.getYear(),
                     i.getGenres(),
                     i.getNumberSeason(),
                     i.getSeasons()
             );
-            serial.put(i.getTitle(), new_serial);
+            serials.put(i.getTitle(), serial);
         }
     }
-    public void addRating(double r, String title, int nr_s, String user_name) {
-        serial.get(title).getSeasons().get(nr_s - 1).addRating(r);
-        serial.get(title).getSeasons().get(nr_s - 1).getUsers().add(user_name);
+    /**
+     * adds to ratings
+     */
+    public void addRating(final double r, final String title, final int nrS,
+                          final String userName) {
+        serials.get(title).getSeasons().get(nrS - 1).addRating(r);
+        serials.get(title).getSeasons().get(nrS - 1).getUsers().add(userName);
     }
-
-    public boolean wasRated(String usr, String title, int nr) {
-        return serial.get(title).getSeasons().get(nr - 1).getUsers().contains(usr);
+    /**
+     * checks if serials was rated
+     */
+    public boolean wasRated(final String usr, final String title, final int nr) {
+        return serials.get(title).getSeasons().get(nr - 1).getUsers().contains(usr);
     }
-
-    public void addViews(String title){
-        serial.get(title).addViews();
+    /**
+     * adds to views
+     */
+    public void addViews(final String title) {
+        serials.get(title).addViews();
     }
-    public void addFav(String title) {
-        serial.get(title).addFavorite();
+    /**
+     * adds to favorite counter
+     */
+    public void addFav(final String title) {
+        serials.get(title).addFavorite();
     }
 }

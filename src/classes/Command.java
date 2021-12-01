@@ -5,7 +5,9 @@ import fileio.ActionInputData;
 public final class Command {
     private Command() {
     }
-
+    /**
+     * Various commands, done this way for cleaner code
+     */
     public static String command(final ActionInputData action,
                                  final Users user, final Movies movies, final Serials serials) {
         switch (action.getType()) {

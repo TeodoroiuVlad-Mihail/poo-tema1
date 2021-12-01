@@ -4,24 +4,36 @@ import entertainment.Season;
 
 import java.util.ArrayList;
 
-public class Serial extends Video{
+public class Serial extends Show {
     private int nrSeasons;
     private ArrayList<Seasons> seasons = new ArrayList<Seasons>();
-
+    /**
+     * gets number of seasons
+     */
     public int getNrSeasons() {
         return nrSeasons;
     }
-    public void setNrSeasons(int nrSeasons) {
+    /**
+     * sets number of seasons
+     */
+    public void setNrSeasons(final int nrSeasons) {
         this.nrSeasons = nrSeasons;
     }
-
+    /**
+     * gets seasons array
+     */
     public ArrayList<Seasons> getSeasons() {
         return seasons;
     }
-    public void setSeasons(ArrayList<Seasons> seasons) {
+    /**
+     * gets seasons array
+     */
+    public void setSeasons(final ArrayList<Seasons> seasons) {
         this.seasons = seasons;
     }
-
+    /**
+     * gets duration
+     */
     public int getDuration() {
         return super.getDuration();
     }
@@ -44,7 +56,7 @@ public class Serial extends Video{
         super(name, year, genre);
         this.nrSeasons = nrSeasons;
         for(int i = 0; i < nrSeasons; ++i) {
-            Seasons aux = new Seasons(i+ 1, seasons.get(i).getDuration());
+            Seasons aux = new Seasons(i + 1, seasons.get(i).getDuration());
             this.seasons.add(aux);
         }
         this.setDuration();

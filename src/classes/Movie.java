@@ -3,36 +3,57 @@ package classes;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Movie extends Video{
+public class Movie extends Show {
     private int duration;
     private List<Double> ratings = new ArrayList<>();
-
+    /**
+     * gets duration
+     */
     public int getDuration() {
         return duration;
     }
-    public void setDuration(int duration) {
+    /**
+     * sets duration
+     */
+    public void setDuration(final int duration) {
         this.duration = duration;
         super.setDuration(duration);
     }
+    /**
+     * gets ratings
+     */
     public List<Double> getRatings() {
         return ratings;
     }
-    public void setRatings(List<Double> ratings) {
+    /**
+     * sets ratings
+     */
+    public void setRatings(final List<Double> ratings) {
         this.ratings = ratings;
     }
-    public void addRating(double rate) {
+    /**
+     * adds to ratings
+     */
+    public void addRating(final double rate) {
         ratings.add(rate);
     }
 
+    /**
+     * gets to total ratings
+     */
     @Override
-    public void setTotalRatings(double totalRatings) {
-        super.setTotalRatings(totalRatings);
-    }
-    public double getTotal_Ratings() {
+    public double getTotalRatings() {
         return super.getTotalRatings();
     }
+    /**
+     * sets to total ratings
+     */
+    @Override
+    public void setTotalRatings(final double totalRatings) {
+        super.setTotalRatings(totalRatings);
+    }
 
-    Movie(String name, int year, ArrayList<String> genre, int duration) {
+    Movie(final String name, final int year, final ArrayList<String> genre, final int duration) {
         super(name, year, genre);
         this.duration = duration;
     }
