@@ -8,22 +8,7 @@ Starting audit...
 [ERROR] C:\Users\VladT\IdeaProjects\poo tema1\.\src\classes\Query.java:165:53: '3' is a magic number. [MagicNumber]
 [ERROR] C:\Users\VladT\IdeaProjects\poo tema1\.\src\classes\Query.java:167:71: '3' is a magic number. [MagicNumber]
 [ERROR] C:\Users\VladT\IdeaProjects\poo tema1\.\src\classes\Seasons.java:10:23: Variable 'users' must be private and have accessor methods. [VisibilityModifier]
-[ERROR] C:\Users\VladT\IdeaProjects\poo tema1\.\src\classes\Serial.java:40:5: Class 'Serial' looks like designed for extension (can be subclassed), but the method 'setDuration' does not have javadoc that explains how to do that safely. If class is not designed for extension consider making the class 'Serial' final or making the method 'setDuration' static/final/abstract/empty, or adding allowed annotation for the method. [DesignForExtension]
-[ERROR] C:\Users\VladT\IdeaProjects\poo tema1\.\src\classes\Serial.java:40:5: Missing a Javadoc comment. [MissingJavadocMethod]
-[ERROR] C:\Users\VladT\IdeaProjects\poo tema1\.\src\classes\Serial.java:42:9: 'for' construct must use '{}'s. [NeedBraces]
-[ERROR] C:\Users\VladT\IdeaProjects\poo tema1\.\src\classes\Serial.java:42:9: 'for' is not followed by whitespace. [WhitespaceAfter]
-[ERROR] C:\Users\VladT\IdeaProjects\poo tema1\.\src\classes\Serial.java:47:5: Class 'Serial' looks like designed for extension (can be subclassed), but the method 'setTotalRatings' does not have javadoc that explains how to do that safely. If class is not designed for extension consider making the class 'Serial' final or making the method 'setTotalRatings' static/final/abstract/empty, or adding allowed annotation for the method. [DesignForExtension]
-[ERROR] C:\Users\VladT\IdeaProjects\poo tema1\.\src\classes\Serial.java:47:5: Missing a Javadoc comment. [MissingJavadocMethod]
-[ERROR] C:\Users\VladT\IdeaProjects\poo tema1\.\src\classes\Serial.java:47:33: Parameter totalRatings should be final. [FinalParameters]
-[ERROR] C:\Users\VladT\IdeaProjects\poo tema1\.\src\classes\Serial.java:50:5: Class 'Serial' looks like designed for extension (can be subclassed), but the method 'getTotalRatings' does not have javadoc that explains how to do that safely. If class is not designed for extension consider making the class 'Serial' final or making the method 'getTotalRatings' static/final/abstract/empty, or adding allowed annotation for the method. [DesignForExtension]
-[ERROR] C:\Users\VladT\IdeaProjects\poo tema1\.\src\classes\Serial.java:55: Line is longer than 100 characters (found 109). [LineLength]
-[ERROR] C:\Users\VladT\IdeaProjects\poo tema1\.\src\classes\Serial.java:55:19: Parameter name should be final. [FinalParameters]
-[ERROR] C:\Users\VladT\IdeaProjects\poo tema1\.\src\classes\Serial.java:55:32: Parameter year should be final. [FinalParameters]
-[ERROR] C:\Users\VladT\IdeaProjects\poo tema1\.\src\classes\Serial.java:55:42: Parameter genre should be final. [FinalParameters]
-[ERROR] C:\Users\VladT\IdeaProjects\poo tema1\.\src\classes\Serial.java:55:67: Parameter nrSeasons should be final. [FinalParameters]
-[ERROR] C:\Users\VladT\IdeaProjects\poo tema1\.\src\classes\Serial.java:55:82: Parameter seasons should be final. [FinalParameters]
-[ERROR] C:\Users\VladT\IdeaProjects\poo tema1\.\src\classes\Serial.java:58:9: 'for' is not followed by whitespace. [WhitespaceAfter]
 [ERROR] C:\Users\VladT\IdeaProjects\poo tema1\.\src\classes\Serials.java:9:29: Variable 'serials' must be private and have accessor methods. [VisibilityModifier]
 [ERROR] C:\Users\VladT\IdeaProjects\poo tema1\.\src\classes\Users.java:9:27: Variable 'users' must be private and have accessor methods. [VisibilityModifier]
 Audit done.
-Checkstyle ends with 26 errors.
+Checkstyle ends with 11 errors.

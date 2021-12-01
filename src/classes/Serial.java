@@ -37,25 +37,35 @@ public class Serial extends Show {
     public int getDuration() {
         return super.getDuration();
     }
+    /**
+     * sets duration
+     */
     public void setDuration() {
         int sum = 0;
-        for(Seasons s : seasons)
-            sum += s.getDuration();
+        for (Seasons s : seasons) {
+            sum = sum + s.getDuration();
+        }
         super.setDuration(sum);
     }
-
-    public void setTotalRatings(double totalRatings) {
-        super.setTotalRatings(totalRatings);
-    }
+    /**
+     * gets total ratings
+     */
     public double getTotalRatings() {
         return super.getTotalRatings();
     }
+    /**
+     * sets total ratings
+     */
+    public void setTotalRatings(final double totalRatings) {
+        super.setTotalRatings(totalRatings);
+    }
 
 
-    public Serial(String name, int year, ArrayList<String> genre, int nrSeasons, ArrayList<Season> seasons) {
+    public Serial(final String name, final int year, final ArrayList<String> genre,
+                  final int nrSeasons, final ArrayList<Season> seasons) {
         super(name, year, genre);
         this.nrSeasons = nrSeasons;
-        for(int i = 0; i < nrSeasons; ++i) {
+        for (int i = 0; i < nrSeasons; ++i) {
             Seasons aux = new Seasons(i + 1, seasons.get(i).getDuration());
             this.seasons.add(aux);
         }
