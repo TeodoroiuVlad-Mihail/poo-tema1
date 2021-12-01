@@ -1,51 +1,52 @@
 package classes;
 
 import actor.ActorsAwards;
+
 import java.util.ArrayList;
 import java.util.Map;
-
 public class Actor {
-    //mostly a copy of fileio.ActorInputData
     private String name;
     private String careerDescription;
-    private ArrayList<String> filmography = new ArrayList<>();
-    private Map<ActorsAwards, Integer> awards;
+    private ArrayList<String> fimography = new ArrayList<>();
+    private Map<ActorsAwards, Integer> awards; //
+    private double average;
 
     public String getName() {
         return name;
     }
-    public void setName(final String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
     public String getCareerDescription() {
         return careerDescription;
     }
-    public void setCareerDescription(final String careerDescription) {
+    public void setCareerDescription(String careerDescription) {
         this.careerDescription = careerDescription;
     }
 
     public ArrayList<String> getFilmography() {
-        return filmography;
+        return fimography;
     }
-    public void setFilmography(final ArrayList<String> videos) {
-        this.filmography = videos;
+    public void setFimography(ArrayList<String> filmography) {
+        this.fimography = fimography;
     }
 
     public Map<ActorsAwards, Integer> getAwards() {
         return awards;
     }
-    public void setAwards(final Map<ActorsAwards, Integer> awards) {
+    public void setAwards(Map<ActorsAwards, Integer> awards) {
         this.awards = awards;
     }
 
-    public Actor(final String n, final String cd, final ArrayList<String> f,
-                 final Map<ActorsAwards, Integer> a) {
-        //names are shortened because otherwise too long line
-        this.name = n;
-        this.careerDescription = cd;
-        this.filmography = f;
-        this.awards = a;
+    public Actor(String name, String careerDescription, ArrayList<String> filmography, Map<ActorsAwards, Integer> awards) {
+        this.name = name;
+        this.careerDescription = careerDescription;
+        this.fimography = filmography;
+        this.awards = awards;
     }
 
+    public double getAverage() {
+        return average;
+    }
 }

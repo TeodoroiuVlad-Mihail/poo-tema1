@@ -20,6 +20,10 @@ import java.util.Objects;
 //And now my classes, God I wish classes.* did not give a checkstyle error
 import classes.Actors;
 import classes.Movies;
+import classes.Serials;
+import classes.Users;
+import classes.Query;
+import classes.Command;
 
 /**
  * The entry point to this homework. It runs the checker that tests your implentation.
@@ -80,38 +84,71 @@ public final class Main {
 
         Actors actors = new Actors(input.getActors());
         Movies movies = new Movies(input.getMovies());
-        /*input.getSerials()
-        input.getUsers()*/
-        //these seem useful
+        Serials serials = new Serials(input.getSerials());
+        Users users = new Users(input.getUsers());
+        Query query = new Query(actors,movies,serials,users);
 
-        for (ActionInputData action : input.getCommands()) {
-            JSONObject result = null;
-            //need to initialise with null otherwise "might have not been initialised"
+        for(ActionInputData action : input.getCommands()) {
+            JSONObject object = null;
             switch (action.getActionType()) {
+                case "command":
+                    object = fileWriter.writeFile(action.getActionId(),"",Command.command(action,users, movies, serials));
+                    break;
                 case "query" :
                     switch (action.getObjectType()) {
                         case "users" :
-                            //do something
-                            result = fileWriter.writeFile(action.getActionId(), "", "");
+                            object = fileWriter.writeFile(action.getActionId(),"",query.NrOfRatings(action));
                             break;
-                        default:
-                            //do nothing, invalid input, I hope
+                        case "actors":
+                            switch(action.getCriteria()){
+                                case "filter_description":
+                                    object = fileWriter.writeFile(action.getActionId(),"",query.FilterDescription(action));
+                                    break;
+                                case "awards":
+                                    object = fileWriter.writeFile(action.getActionId(),"",query.Awards(action));
+                                    break;
+                                default:
+                                    break;
+                            }
+                            break;
+                        default :
+                            switch(action.getCriteria()){
+                                case "most_viewed":
+                                    object = fileWriter.writeFile(action.getActionId(),"",query.MostViewed(action));
+                                    break;
+                                case "longest":
+                                    object = fileWriter.writeFile(action.getActionId(),"",query.Longest(action));
+                                    break;
+                                case "favorite":
+                                    object = fileWriter.writeFile(action.getActionId(),"",query.Favorite(action));
+                                    break;
+                                case "ratings":
+                                    object = fileWriter.writeFile(action.getActionId(),"",query.Rating(action));
+                                    break;
+                                default:
+                                    break;
+                            }
                             break;
                     }
                     break;
-                case "command":
-                    //do something, change stuff in the database depending on the command
-                    result = fileWriter.writeFile(action.getActionId(), "",
-                            "error -> Sherlock: The Final Problem is already in favourite list");
-                    //placeholder to at least get the hang of how to format the output
-                    break;
-                default:
-                    //again, nothing
-                    break;
+                case "recommendation":
+                    switch (action.getType()){
+                        case "search":
+                            object = fileWriter.writeFile(action.getActionId(),"",query.Search(action));
+                            break;
+                        case "favorite":
+                            object = fileWriter.writeFile(action.getActionId(),"",query.RecFavorite(action));
+                            break;
+                        default: break;
+
+                    }
+
+                default: break;
             }
-            arrayResult.add(arrayResult.size(), result);
+            arrayResult.add(arrayResult.size(), object);
         }
 
+        //I should probably clean up the query calls like with the commands, but there's just so many of them
         //end of student implementation
 
         fileWriter.closeJSON(arrayResult);
