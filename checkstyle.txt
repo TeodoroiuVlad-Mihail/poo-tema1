@@ -1,2 +1,14 @@
 Starting audit...
+[ERROR] C:\Users\VladT\IdeaProjects\poo tema1\.\src\classes\Actors.java:9:22: Variable 'actors' must be private and have accessor methods. [VisibilityModifier]
+[ERROR] C:\Users\VladT\IdeaProjects\poo tema1\.\src\classes\Movies.java:9:28: Variable 'movies' must be private and have accessor methods. [VisibilityModifier]
+[ERROR] C:\Users\VladT\IdeaProjects\poo tema1\.\src\classes\Query.java:12:12: Variable 'actors' must be private and have accessor methods. [VisibilityModifier]
+[ERROR] C:\Users\VladT\IdeaProjects\poo tema1\.\src\classes\Query.java:13:12: Variable 'movies' must be private and have accessor methods. [VisibilityModifier]
+[ERROR] C:\Users\VladT\IdeaProjects\poo tema1\.\src\classes\Query.java:14:13: Variable 'serials' must be private and have accessor methods. [VisibilityModifier]
+[ERROR] C:\Users\VladT\IdeaProjects\poo tema1\.\src\classes\Query.java:15:11: Variable 'users' must be private and have accessor methods. [VisibilityModifier]
+[ERROR] C:\Users\VladT\IdeaProjects\poo tema1\.\src\classes\Query.java:165:53: '3' is a magic number. [MagicNumber]
+[ERROR] C:\Users\VladT\IdeaProjects\poo tema1\.\src\classes\Query.java:167:71: '3' is a magic number. [MagicNumber]
+[ERROR] C:\Users\VladT\IdeaProjects\poo tema1\.\src\classes\Seasons.java:10:23: Variable 'users' must be private and have accessor methods. [VisibilityModifier]
+[ERROR] C:\Users\VladT\IdeaProjects\poo tema1\.\src\classes\Serials.java:9:29: Variable 'serials' must be private and have accessor methods. [VisibilityModifier]
+[ERROR] C:\Users\VladT\IdeaProjects\poo tema1\.\src\classes\Users.java:9:27: Variable 'users' must be private and have accessor methods. [VisibilityModifier]
 Audit done.
+Checkstyle ends with 11 errors.
